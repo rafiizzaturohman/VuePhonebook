@@ -1,5 +1,5 @@
 <script>
-import { useContactStore } from '../stores/contact';
+import { useContactStore } from '../stores/contact'
 
 export default {
     setup() {

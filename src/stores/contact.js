@@ -72,14 +72,11 @@ export const useContactStore = defineStore({
 
         async updateItem({ id, name, phone }) {
             const { data } = await api.put(`users/${id}`, { name, phone })
-            console.log(data)
             try {
                 this.rawItems = this.rawItems.map(item => {
                     if (item.id === id) {
                         return {
-                            id: data.data.id,
-                            name: data.data.name,
-                            phone: data.data.phone,
+                            ...data.data,
                             sent: true
                         }
                     }
@@ -109,6 +106,14 @@ export const useContactStore = defineStore({
                 }
             } catch (error) {
                 alert('Failed to resend data')
+                console.log(error)
+            }
+        },
+
+        async searchItem(searchName, searchPhone) {
+            try {
+                const { data } = await api.get
+            } catch (error) {
                 console.log(error)
             }
         }

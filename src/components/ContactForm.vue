@@ -6,8 +6,13 @@ const emit = defineEmits(['createContact'])
 const name = ref('')
 const phone = ref('')
 
-function addContact() {
+const addContact = () => {
     emit('createContact', { name: name.value, phone: phone.value })
+    name.value = ''
+    phone.value = ''
+}
+
+const cancelContact = () => {
     name.value = ''
     phone.value = ''
 }
@@ -16,7 +21,7 @@ function addContact() {
 <template>
     <div>
         <div>
-            <h1 class="title">Contact</h1>
+            <h1 class="title">Contact Book</h1>
         </div>
 
         <div class="form-input">
@@ -39,7 +44,7 @@ function addContact() {
                         <p class="addtext">Add</p>
                     </button>
 
-                    <button type='button' class="cancelbutton">
+                    <button type='button' class="cancelbutton" @click="cancelContact">
                         <p class="canceltext">Cancel</p>
                     </button>
                 </div>

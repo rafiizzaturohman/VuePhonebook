@@ -12,6 +12,6 @@ defineProps({
 
 <template>
     <div class="mt-4 list-contact">
-        <ContactItem v-for="(kontak) in contacts" :contact="kontak" />
+        <ContactItem v-for="(contact) in contacts" :contact="contact" />
     </div>
 </template>

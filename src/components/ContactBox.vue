@@ -1,7 +1,7 @@
 <script setup>
 import ContactList from './ContactList.vue';
 import ContactForm from './ContactForm.vue';
-import { useContactStore } from '../stores/contact';
+import { useContactStore } from '../stores/contact'
 
 const Contact = useContactStore()
 const vLoadContact = {
