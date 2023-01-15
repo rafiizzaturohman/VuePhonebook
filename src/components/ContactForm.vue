@@ -7,7 +7,6 @@ const name = ref('')
 const phone = ref('')
 
 function addContact() {
-    console.log(name.value, phone.value)
     emit('createContact', { name: name.value, phone: phone.value })
     name.value = ''
     phone.value = ''
@@ -17,7 +16,7 @@ function addContact() {
 <template>
     <div>
         <div>
-            <h1 class="title">Add Contact</h1>
+            <h1 class="title">Contact</h1>
         </div>
 
         <div class="form-input">
@@ -28,7 +27,7 @@ function addContact() {
                 </div>
 
                 <div class="input-group">
-                    <input type='tel' pattern='[08][0-9]{11}' maxlength="13" v-model="phone" id="phone" class="input"
+                    <input type='tel' pattern='[08][0-9]{11}' maxlength="12" v-model="phone" id="phone" class="input"
                         required>
                     <label for="phone" class="input-label">Phone</label>
                 </div>

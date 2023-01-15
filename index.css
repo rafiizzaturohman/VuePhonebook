@@ -15,8 +15,22 @@
     margin-top: 1rem;
 }
 
-.item {
-    color: black;
+.list-contact {
+    height: 26rem;
+    display: grid;
+    grid-gap: 8px;
+    padding: 8px 10px;
+    overflow-y: scroll;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.itemname {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.itemphone {
+    font-size: 15px;
 }
 
 .form-input {
@@ -34,6 +48,33 @@
 
 .mt-2 {
     margin-top: 4px;
+}
+
+.mt-4 {
+    margin-top: 0.5rem;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 0.5rem;
+}
+
+.item {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+    border: 2px solid #028e5f;
 }
 
 /* BUTTON FORM START */
@@ -99,6 +140,38 @@
     font-weight: bolder;
 }
 
+.resendbutton {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition-delay: 200ms;
+    transition-duration: 150ms;
+    background-color: #ef4444;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+}
+
+.resendbutton:hover {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition-delay: 200ms;
+    transition-duration: 150ms;
+    background-color: #c02323;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+}
+
+.resendtext {
+    font-weight: bolder;
+}
+
 /* BUTTON FORM END */
 
 
@@ -139,3 +212,63 @@
 }
 
 /* INPUT FORM END */
+
+/* INPUT EDIT FORM START */
+.formedit {
+    display: flex;
+}
+
+.inputadd {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    font: inherit;
+    color: black;
+    border-radius: 6px;
+    outline: 2px solid #14b8a6;
+    background-color: transparent;
+}
+
+.inputphone {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    font: inherit;
+    color: black;
+    border-radius: 6px;
+    outline: 2px solid #14b8a6;
+    background-color: transparent;
+}
+
+.editbutton {
+    display: flex;
+    margin-top: 10px;
+}
+
+/* INPUT EDIT FORM END */
+
+/* width */
+::-webkit-scrollbar {
+    height: 1rem;
+    width: 0.9rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #e2e8f0;
+    border: 1px dotted #cbd5e1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 100vh;
+    background: #17cb7a;
+    border: 2px solid #cbd5e1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #41B883;
+    border: 2px solid #e2e8f0;
+}
