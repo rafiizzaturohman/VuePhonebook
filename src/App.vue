@@ -8,12 +8,11 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="Vuenbook" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/contact">Contact</RouterLink>
+        <RouterLink to="/list">List</RouterLink>
       </nav>
     </div>
   </header>
@@ -30,6 +29,11 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+p {
+  margin-top: -0.5rem;
+  white-space: nowrap;
 }
 
 nav {
@@ -68,10 +72,16 @@ nav a:first-of-type {
     margin: 0 2rem 0 0;
   }
 
+  p {
+    margin-top: -0.5rem;
+    white-space: nowrap;
+  }
+
   header .wrapper {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+    margin-top: 16px;
   }
 
   nav {
@@ -80,7 +90,7 @@ nav a:first-of-type {
     font-size: 1rem;
 
     padding: 1rem 0;
-    margin-top: 1rem;
+    margin-top: 6px;
   }
 }
 </style>

@@ -1,17 +1,12 @@
 <script setup>
-import ContactItem from '../components/ContactItem.vue';
+import ContactBox from '@/components/ContactBox.vue';
 </script>
 
 <template>
-    <div class="contact-title">
-        <h1 class="title">Contact List</h1>
-    </div>
-
     <main>
-        <ContactItem />
+        <ContactBox />
     </main>
 </template>
-
 
 <style>
 @import "../../index.css";

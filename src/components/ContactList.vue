@@ -1,24 +1,20 @@
-<script>
-import { useContactStore } from '../stores/contact';
+<script setup>
+import ContactItem from './ContactItem.vue';
 
-export default {
-    setup() {
-        const Contact = useContactStore()
-
-        return { Contact }
-    },
-    props: {
-        contact: {
-            type: Object,
-            required: true
-        }
-    },
-    data() {
-        return {
-            isEdit: false,
-            contact: this.contact.name,
-            sent: this.contact.sent
-        }
-    },
-}
+defineProps({
+    contacts: {
+        type: Object,
+        requeired: true
+    }
+})
 </script>
+
+<template>
+    <div>
+        <ContactItem v-for="(contact) in contacts" :contact="contact" />
+    </div>
+</template>
+
+<!--  resend={()=> this.props.resend(user.id, user.name,
+user.phone)} remove={() => this.props.remove(user.id)} update={(name, phone) => this.props.update(user.id,
+name, phone) -->
