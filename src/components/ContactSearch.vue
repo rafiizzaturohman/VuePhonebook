@@ -1,3 +1,7 @@
+<style scoped>
+@import "../../index.css";
+</style>
+
 <script setup>
 import { ref } from 'vue';
 
@@ -6,10 +10,10 @@ const emit = defineEmits(['searchContact'])
 const searchName = ref('')
 const searchPhone = ref('')
 
-const searchContact = () => {
-    emit('searchContact', { searchName: searchName.value, searchPhone: searchPhone.value })
-    searchName.value = searchName.value
-    searchPhone.value = searchPhone.value
+const addContact = () => {
+    emit('searchContact', { searchName: searchName.value || '', searchPhone: searchPhone.value || '' })
+    searchName.value = ''
+    searchPhone.value = ''
 }
 
 const cancelContact = () => {
@@ -23,17 +27,18 @@ const cancelContact = () => {
     <div>
         <div class="form-input">
             <div>
-                <p class="title-form">Search</p>
+                <p class="title-form">Add</p>
             </div>
-            <form @submit.prevent="searchContact">
+
+            <form @submit.prevent="addContact">
                 <div class="input-group flex">
                     <label for="searchName" class="label">Name</label>
                     <input type='text' maxlength="20" v-model="searchName" id="searchName" class="input">
                 </div>
 
                 <div class="input-group flex">
-                    <label for="searchName" class="label">Phone</label>
-                    <input type='tel' pattern='[08][0-9]{11}' maxlength="12" v-model="searchPhone" id="searchPhone" class="input">
+                    <label for="searchPhone" class="label">Phone</label>
+                    <input type='tel' maxlength="12" v-model="searchPhone" id="searchPhone" class="input">
                 </div>
 
                 <div class="mt-10">
@@ -50,10 +55,6 @@ const cancelContact = () => {
     </div>
 </template>
 
-<style scoped>
+<style>
 @import "../../index.css";
-
-p {
-    margin: -2px 0;
-}
 </style>

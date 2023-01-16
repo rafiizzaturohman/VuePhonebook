@@ -24,12 +24,11 @@ const vLoadContact = {
                     <ContactSearch @searchContact="Contact.searchItem" />
                 </div>
             </div>
-            <div></div>
         </div>
 
         <div>
             <div class="mt-8">
-                <ContactList v-load-contact :contacts="Contact.rawItems" />
+                <ContactList v-load-contact :contacts="Contact.rawItems" @loadMore="Contact.loadMore" />
             </div>
         </div>
     </header>

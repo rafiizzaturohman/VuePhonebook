@@ -25,20 +25,39 @@
     margin: 1rem 0 -6px 0;
 }
 
+@media (max-width: 1200px) {
+    .list-contact {
+        height: 26rem;
+        display: grid;
+        grid-gap: 8px;
+        padding: 8px 10px;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 1024px) {
     .list-contact {
-        width: 100%;
+        height: 26rem;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 8px;
+        padding: 8px 10px;
+        overflow-y: scroll;
         margin-bottom: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 660px) {
     .list-contact {
-        width: 100%;
-        display: block;
+        height: 26rem;
+        display: grid;
+        grid-gap: 8px;
+        padding: 8px 10px;
+        overflow-y: scroll;
         margin-bottom: 20px;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 }
 
@@ -272,7 +291,7 @@
 /* width */
 ::-webkit-scrollbar {
     height: 1rem;
-    width: 0.9rem;
+    width: 0.8rem;
 }
 
 /* Track */

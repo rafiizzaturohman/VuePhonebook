@@ -1,16 +1,14 @@
 import { defineStore } from "pinia";
 import { api } from './API'
 
-let params = {
-    page: 1,
-    searchName: '',
-    searchPhone: ''
-}
-
 export const useContactStore = defineStore({
     id: 'contact',
     state: () => ({
-        rawItems: []
+        rawItems: [],
+        params: {
+            page: 1,
+            pages: 0
+        }
     }),
     getters: {
         items: (state) => {
@@ -21,14 +19,65 @@ export const useContactStore = defineStore({
     actions: {
         async loadItem() {
             try {
-                const { data } = await api.get('users')
+                const { data } = await api.get('users', { params: this.params })
 
-                this.rawItems = data.data.users.map(item => ({
+                this.rawItems = [...(this.params.page === 1 ? [] : this.rawItems),
+                ...data.data.users.map(item => ({
                     id: item.id,
                     name: item.name,
                     phone: item.phone,
                     sent: true
-                }));
+                }))]
+                this.params = {
+                    page: data.data.page,
+                    pages: data.data.pages
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async loadMore() {
+            try {
+                if (this.params.page < this.params.pages) {
+                    let params = {
+                        ...this.params.pages,
+                        page: this.params.page + 1,
+                    }
+
+                    const { data } = await api.get('users', { params })
+                    this.params = {
+                        page: data.data.page,
+                        pages: data.data.pages
+                    }
+
+                    this.rawItems = [...this.rawItems, ...data.data.users.map(item => {
+                        item.sent = true
+                        return item
+                    })]
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async searchItem({ searchName, searchPhone }) {
+            let params = {
+                ...this.params,
+                searchName,
+                searchPhone
+            }
+            try {
+                const { data } = await api.get('users', { params })
+
+                this.rawItems = data.data.users.map(item => {
+                    item.sent = true
+                    return item
+                })
+                this.params = {
+                    page: data.data.page,
+                    pages: data.data.pages
+                }
             } catch (error) {
                 console.log(error)
             }
@@ -39,6 +88,7 @@ export const useContactStore = defineStore({
             this.rawItems.push({ id, name, phone })
             try {
                 const { data } = await api.post('users', { name, phone })
+
                 this.rawItems = this.rawItems.map(item => {
                     if (item.id === id) {
                         return {
@@ -51,7 +101,6 @@ export const useContactStore = defineStore({
                     return item
                 })
             } catch (error) {
-                console.log(error)
                 this.rawItems = this.rawItems.map(item => {
                     if (item.id === id) {
                         return {
@@ -69,6 +118,7 @@ export const useContactStore = defineStore({
         async removeItem(id) {
             try {
                 this.rawItems = this.rawItems.filter(item => item.id !== id)
+
                 await api.delete(`users/${id}`)
             } catch (error) {
                 console.log(error)
@@ -77,6 +127,7 @@ export const useContactStore = defineStore({
 
         async updateItem({ id, name, phone }) {
             const { data } = await api.put(`users/${id}`, { name, phone })
+
             try {
                 this.rawItems = this.rawItems.map(item => {
                     if (item.id === id) {
@@ -87,7 +138,6 @@ export const useContactStore = defineStore({
                     }
                     return item
                 })
-                console.log(data)
             } catch (error) {
                 alert('Failed to update contact')
                 console.log(error)
