@@ -7,7 +7,7 @@ export const useContactStore = defineStore({
         rawItems: [],
         params: {
             page: 1,
-            pages: 0
+            pages: 1
         }
     }),
     getters: {
@@ -65,19 +65,19 @@ export const useContactStore = defineStore({
             let params = {
                 ...this.params,
                 searchName,
-                searchPhone
+                searchPhone,
+                page: 1
             }
             try {
                 const { data } = await api.get('users', { params })
-
+                params = {
+                    ...params,
+                    pages: data.data.pages
+                }
                 this.rawItems = data.data.users.map(item => {
                     item.sent = true
                     return item
                 })
-                this.params = {
-                    page: data.data.page,
-                    pages: data.data.pages
-                }
             } catch (error) {
                 console.log(error)
             }

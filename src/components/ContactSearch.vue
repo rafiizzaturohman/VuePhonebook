@@ -10,8 +10,8 @@ const emit = defineEmits(['searchContact'])
 const searchName = ref('')
 const searchPhone = ref('')
 
-const addContact = () => {
-    emit('searchContact', { searchName: searchName.value || '', searchPhone: searchPhone.value || '' })
+const searchContact = () => {
+    emit('searchContact', { searchName: searchName.value, searchPhone: searchPhone.value })
     searchName.value = ''
     searchPhone.value = ''
 }
@@ -27,10 +27,10 @@ const cancelContact = () => {
     <div>
         <div class="form-input">
             <div>
-                <p class="title-form">Add</p>
+                <p class="title-form">Search</p>
             </div>
 
-            <form @submit.prevent="addContact">
+            <form @submit.prevent="searchContact">
                 <div class="input-group flex">
                     <label for="searchName" class="label">Name</label>
                     <input type='text' maxlength="20" v-model="searchName" id="searchName" class="input">
