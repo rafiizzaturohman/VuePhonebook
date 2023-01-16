@@ -14,6 +14,7 @@ const scrolling = (event) => {
     var element = event.target;
     if (element.scrollHeight - element.scrollTop - element.clientHeight <= 1) {
         emit('loadMore')
+        console.log('Scrolled')
     }
 }
 
