@@ -1,6 +1,12 @@
 import { defineStore } from "pinia";
 import { api } from './API'
 
+let params = {
+    page: 1,
+    searchName: '',
+    searchPhone: ''
+}
+
 export const useContactStore = defineStore({
     id: 'contact',
     state: () => ({
@@ -15,7 +21,7 @@ export const useContactStore = defineStore({
     actions: {
         async loadItem() {
             try {
-                const { data } = await api.get('users', { params: { page: 1 } })
+                const { data } = await api.get('users')
 
                 this.rawItems = data.data.users.map(item => ({
                     id: item.id,
@@ -27,7 +33,6 @@ export const useContactStore = defineStore({
                 console.log(error)
             }
         },
-
 
         async addItem({ name, phone }) {
             const id = Date.now()
@@ -106,14 +111,6 @@ export const useContactStore = defineStore({
                 }
             } catch (error) {
                 alert('Failed to resend data')
-                console.log(error)
-            }
-        },
-
-        async searchItem(searchName, searchPhone) {
-            try {
-                const { data } = await api.get
-            } catch (error) {
                 console.log(error)
             }
         }

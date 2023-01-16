@@ -6,13 +6,7 @@
     font-weight: bold;
     color: #00b472;
     font-size: 1.5rem;
-}
-
-.search-title {
-    color: #00b472;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-top: 1rem;
+    border-bottom: 2px dashed #000000;
 }
 
 .list-contact {
@@ -22,6 +16,30 @@
     padding: 8px 10px;
     overflow-y: scroll;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.title-form {
+    color: #00b472;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem 0 -6px 0;
+}
+
+@media (max-width: 1024px) {
+    .list-contact {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 660px) {
+    .list-contact {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
 }
 
 .itemname {
@@ -34,7 +52,7 @@
 }
 
 .form-input {
-    margin-top: 1.3rem;
+    margin-top: 10px;
 }
 
 .format {
@@ -43,7 +61,7 @@
 
 .input-group {
     position: relative;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 .mt-2 {
@@ -56,6 +74,10 @@
 
 .mt-8 {
     margin-top: 2rem;
+}
+
+.mt-10 {
+    margin-top: 2.9rem;
 }
 
 .mb-4 {
@@ -271,4 +293,35 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #41B883;
     border: 2px solid #e2e8f0;
+}
+
+.form-box {
+    display: flex;
+
+}
+
+.link .search {
+    margin-right: 10px;
+}
+
+.link .add {
+    margin-left: 10px;
+}
+
+.addform {
+    margin-right: 1rem;
+}
+
+.searchform {
+    margin-left: 1rem;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    margin-right: 1rem;
+    font-size: large;
 }

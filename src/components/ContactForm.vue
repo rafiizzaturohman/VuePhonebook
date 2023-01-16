@@ -20,11 +20,10 @@ const cancelContact = () => {
 
 <template>
     <div>
-        <div>
-            <h1 class="title">Contact Book</h1>
-        </div>
-
         <div class="form-input">
+            <div>
+                <p class="title-form">Add</p>
+            </div>
             <form @submit.prevent="addContact">
                 <div class="input-group">
                     <input type='text' maxlength="20" v-model="name" id="name" class="input" required>
